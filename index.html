@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Clock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    .content {
+      flex: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .content p {
+      font-size: 1.5rem;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .countdown {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .countdown span {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <center>
+        <h1>Count-Down Clock</h1>
+    </center>
+    <p>
+      Hello it's me Muhhamad Haaziq From Class 7 I have made Count Down Clock it takes 2hours to make it 
+      And it is 6 Java-script Assingment THANK-YOU! 😊 😊 😊
+    </p>
+  </div>
+  <div class="countdown">
+    <span id="countdown-clock">00:00:00</span>
+  </div>
+
+  <script>
+    // Set the target date and time
+    const targetDate = new Date();
+    targetDate.setHours(targetDate.getHours() + 1); // Countdown for 1 hours
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown-clock").textContent = "Time's up!";
+        clearInterval(interval);
+        return;
+      }
+
+      const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
+      const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+
+      document.getElementById("countdown-clock").textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initial call to avoid delay
+  </script>
+</body>
+</html>
